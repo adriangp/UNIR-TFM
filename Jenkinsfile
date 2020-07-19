@@ -17,7 +17,7 @@ pipeline {
 	  stage('Build') {
 	    steps {
 	      sh 'echo "Contruyendo imagen de MongoDB" '
-		  sh 'docker -version'
+		  sh 'sudo apt-get install docker.io'
 	      //script{
 		  //  customimage = docker.build registry, "./Docker/mongo/"
 	      //}
