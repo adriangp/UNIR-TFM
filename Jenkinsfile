@@ -10,7 +10,7 @@ pipeline {
 	  }
 	  stage('Build') {
 	    sh 'echo "Contruyendo imagen de MongoDB"'
-	    def docker-image = docker.build("adriangp/tfm-mongo","./Docker/mongo/Dockerfile")
+	    docker-image = docker.build("adriangp/tfm-mongo","./Docker/mongo/Dockerfile")
 	  }
 	  stage('Test'){
 	    sh 'Testeando imagenes'
@@ -18,8 +18,8 @@ pipeline {
 	  stage('Publish'){
 	    sh 'echo "Publicando imagenes en DockerHub"'
         docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Cred') {
-          app.push("${env.BUILD_NUMBER}")
-          app.push("latest")
+          docker-image.push("${env.BUILD_NUMBER}")
+          docker-image.push("latest")
         }
 	  }
 	}
