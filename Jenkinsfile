@@ -1,5 +1,10 @@
-node {
-  def customimage
+pipeline {
+  environment{
+    customimage = ''
+	registry = "adriangp/tfm"
+	registryCredential = 'DockerHub-Cred'
+  }
+  agent any
     stages {
 	  stage('Checkout') {
 	    steps {
