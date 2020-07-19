@@ -3,7 +3,7 @@ pipeline {
     stages {
 	  stage('checkout'){
 	    steps{
-			checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'http://git-server/adriangp/UNIR-TFM.git']]])
+			checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'http://github.com/adriangp/UNIR-TFM.git']]])
 		}
 	  }
       stage('Build') {
