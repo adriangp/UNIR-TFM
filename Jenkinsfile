@@ -17,7 +17,7 @@ pipeline {
 	  stage('Build') {
 	    steps {
 	      sh 'echo "Contruyendo imagen de MongoDB"'
-	      customimage = docker.build registry + ":$BUILD_NUMBER"
+	      //customimage = docker.build registry + ":$BUILD_NUMBER"
 		}
 	  }
 
