@@ -16,7 +16,7 @@ pipeline {
 	  stage('Build') {
 	    steps {
 	      sh 'echo "Contruyendo imagen de MongoDB"'
-	      customimage = docker.build("adriangp/tfm-mongo","./Docker/mongo/Dockerfile")
+	      customimage = docker.build registry + ":$BUILD_NUMBER"
 		}
 	  }
 	  stage('Test'){
