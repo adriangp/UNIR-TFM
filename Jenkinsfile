@@ -1,6 +1,5 @@
 pipeline {
   agent any
-  def docker-image
     stages {
 	  stage('Checkout') {
 	    steps {
@@ -11,7 +10,7 @@ pipeline {
 	  }
 	  stage('Build') {
 	    sh 'echo "Contruyendo imagen de MongoDB"'
-	    docker-image = docker.build("adriangp/tfm-mongo","-f ${dockerfile}./Docker/mongo")
+	    def docker-image = docker.build("adriangp/tfm-mongo","./Docker/mongo/Dockerfile")
 	  }
 	  stage('Test'){
 	    sh 'Testeando imagenes'
