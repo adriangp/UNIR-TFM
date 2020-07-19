@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment{
     customimage = ''
-	registry = "adriangp/tfm"
+	registry = "adriangp/tfm-mongo"
 	registryCredential = 'DockerHub-Cred'
   }
 
@@ -18,7 +18,7 @@ pipeline {
 	    steps {
 	      sh 'echo "Contruyendo imagen de MongoDB"'
 	      script{
-		    customimage = docker.build registry, "./Docker/mongo/"
+		    customimage = docker.build registry, ./Docker/mongo/
 	      }
 		}
 	  }
