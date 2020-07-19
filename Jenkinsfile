@@ -1,12 +1,13 @@
 pipeline {
   agent any
     stages {
-	  
-      stage('Build') {
+	  stage('checkout'){
 	    steps{
 			checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'http://git-server/adriangp/UNIR-TFM.git']]])
 		}
-        steps {
+	  }
+      stage('Build') {
+	    steps {
 	      sh 'ls -lart'
 	    }
 	  }
