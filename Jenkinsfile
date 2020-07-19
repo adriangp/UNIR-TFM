@@ -28,8 +28,8 @@ pipeline {
 	    steps {
 	      sh 'echo "Publicando imagenes en DockerHub"'
           docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Cred') {
-            customimage.push("${env.BUILD_NUMBER}")
-            customimage.push("latest")
+            docker.push("${env.BUILD_NUMBER}")
+            docker.push("latest")
           }
 		}
 	  }
