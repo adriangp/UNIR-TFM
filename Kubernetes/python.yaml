@@ -1,0 +1,35 @@
+  GNU nano 2.7.4                                                                                                    File: python.yaml                                                                                                               
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: python
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      containers:
+      - name: python
+        image: adriangp/unir-practica3-python:10
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: MONGO_SVC_SERVICE_HOST
+            value: mongo-svc
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-svc
+spec:
+  type: NodePort
+  ports:
+  - name: app-svc
+    port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: python

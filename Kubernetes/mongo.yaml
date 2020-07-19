@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mongo
+  template:
+    metadata:
+      labels:
+        name: mongo
+    spec:
+      containers:
+        - name: mongo
+          image: adriangp/unir-practica3-mongo:4
+          ports:
+          - containerPort: 27017
+            name: mongodb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: mongo-svc
+  name: mongo-svc
+spec:
+  type: NodePort
+  selector:
+    name: mongo
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+      name: mongodb
