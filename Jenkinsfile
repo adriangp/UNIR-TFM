@@ -1,10 +1,11 @@
-pipeline {
+node {
+  agent any
   environment{
     customimage = ''
 	registry = "adriangp/tfm"
 	registryCredential = 'DockerHub-Cred'
   }
-  agent any
+
     stages {
 	  stage('Checkout') {
 	    steps {
