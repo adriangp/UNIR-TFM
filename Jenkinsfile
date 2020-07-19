@@ -19,7 +19,7 @@ pipeline {
 	      sh 'echo "Contruyendo imagen de MongoDB"'
 		  
 	      script{
-		    customimage = docker.build registry, "-f ./Docker/mongo/Dockerfile"
+		    customimage = docker.build registry, "./Docker/mongo/"
 	      }
 		}
 	  }
