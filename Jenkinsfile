@@ -1,5 +1,6 @@
 pipeline {
   agent any
+  def customimage
     stages {
 	  stage('Checkout') {
 	    steps {
@@ -11,7 +12,7 @@ pipeline {
 	  stage('Build') {
 	    steps {
 	      sh 'echo "Contruyendo imagen de MongoDB"'
-	      def customimage = docker.build("adriangp/tfm-mongo","./Docker/mongo/Dockerfile")
+	      customimage = docker.build("adriangp/tfm-mongo","./Docker/mongo/Dockerfile")
 		}
 	  }
 	  stage('Test'){
