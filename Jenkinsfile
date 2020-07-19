@@ -9,18 +9,24 @@ pipeline {
 		}
 	  }
 	  stage('Build') {
-	    sh 'echo "Contruyendo imagen de MongoDB"'
-	    def customimage = docker.build("adriangp/tfm-mongo","./Docker/mongo/Dockerfile")
+	    steps {
+	      sh 'echo "Contruyendo imagen de MongoDB"'
+	      def customimage = docker.build("adriangp/tfm-mongo","./Docker/mongo/Dockerfile")
+		}
 	  }
 	  stage('Test'){
-	    sh 'Testeando imagenes'
+	    steps {
+	      sh 'Testeando imagenes'
+		}
 	  }
 	  stage('Publish'){
-	    sh 'echo "Publicando imagenes en DockerHub"'
-        docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Cred') {
-          customimage.push("${env.BUILD_NUMBER}")
-          customimage.push("latest")
-        }
+	    steps {
+	      sh 'echo "Publicando imagenes en DockerHub"'
+          docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Cred') {
+            customimage.push("${env.BUILD_NUMBER}")
+            customimage.push("latest")
+          }
+		}
 	  }
 	}
 }	
