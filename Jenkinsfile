@@ -25,10 +25,10 @@ pipeline {
 	  stage('Build') {
 	    steps {
 	      sh 'echo "Contruyendo imagen de MongoDB" '
-		  sh 'docker -version' 
-	      //script{
-		  //  customimage = docker.build registry, "./Docker/mongo/"
-	      //}
+		  //sh 'docker -version' 
+	      script{
+		    customimage = docker.build registry, "./Docker/mongo/"
+	      }
 		}
 	  }
 	  stage('Test'){
