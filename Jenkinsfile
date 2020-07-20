@@ -30,9 +30,11 @@ pipeline {
 	  stage('Publish'){
 	    steps {
 	      sh 'echo "Publicando imagenes en DockerHub"'
-          docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Cred') {
-            docker.push("${env.BUILD_NUMBER}")
-            docker.push("latest")
+		  script {
+            docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Cred') {
+              docker.push("${env.BUILD_NUMBER}")
+              docker.push("latest")
+			}
           }
 		}
 	  }
