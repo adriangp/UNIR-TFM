@@ -18,7 +18,7 @@ pipeline {
 	    steps {
 	      sh 'echo "Contruyendo imagen de MongoDB" '
 	      script{
-		    customimage = docker.build registry, "./Docker/mongo/"
+		    customimage = docker.build registry +  + ":$BUILD_NUMBER", "./Docker/mongo/"
 	      }
 		}
 	  }
@@ -32,8 +32,8 @@ pipeline {
 	      sh 'echo "Publicando imagenes en DockerHub"'
 		  script {
             docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Cred') {
-              docker.push("${env.BUILD_NUMBER}")
-              docker.push("latest")
+              customimage.push("${env.BUILD_NUMBER}")
+              customimage.push("latest")
 			}
           }
 		}
