@@ -1,8 +1,12 @@
 pipeline {
   agent any
   environment{
-    customimage = ''
-	registry = "adriangp/tfm"
+	versionBD = "1.1"
+	versionAPP = "1.1"
+    customimageBD = ''
+	customimageAPP = ''
+	registryBD = "adriangp/tfm-bd"
+	registryAPP = "adriangp/tfm-app"
 	registryCredential = 'DockerHub-Cred'
   }
 
@@ -18,7 +22,11 @@ pipeline {
 	    steps {
 	      sh 'echo "Contruyendo imagen de MongoDB" '
 	      script{
-		    customimage = docker.build registry + ":$BUILD_NUMBER", "./Docker/mongo/"
+		    customimageBD = docker.build registryBD + ":$versionBD", "./Docker/mongo/"
+	      }
+		  sh 'echo "Contruyendo imagen de Aplicacion" '
+	      script{
+		    customimageAPP = docker.build registryAPP + ":$versionAPP", "./Docker/python/"
 	      }
 		}
 	  }
@@ -32,8 +40,10 @@ pipeline {
 	      sh 'echo "Publicando imagenes en DockerHub"'
 		  script {
             docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Cred') {
-              customimage.push("${env.BUILD_NUMBER}")
-              customimage.push("latest")
+              customimageBD.push("${versionBD}")
+              customimageBD.push("latest")
+			  customimageBD.push("${versionAPP}")
+              customimageBD.push("latest")
 		    }
           }
 		}
