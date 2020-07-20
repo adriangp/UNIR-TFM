@@ -42,8 +42,8 @@ pipeline {
             docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Cred') {
               customimageBD.push("${versionBD}")
               customimageBD.push("latest")
-			  customimageBD.push("${versionAPP}")
-              customimageBD.push("latest")
+			  customimageAPP.push("${versionAPP}")
+              customimageAPP.push("latest")
 		    }
           }
 		}
