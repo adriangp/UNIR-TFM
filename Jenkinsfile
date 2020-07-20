@@ -35,7 +35,7 @@ pipeline {
           //    customimage.push("${env.BUILD_NUMBER}")
           //    customimage.push("latest")
 		  //}
-          }
+          //}
 		}
 	  }
 	}
