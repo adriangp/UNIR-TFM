@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: python
-        image: adriangp/unir-practica3-python:10
+        image: adriangp/tfm-app
         imagePullPolicy: IfNotPresent
         env:
           - name: MONGO_SVC_SERVICE_HOST

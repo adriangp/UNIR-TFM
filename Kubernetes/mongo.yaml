@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mongo
-          image: adriangp/unir-practica3-mongo:4
+          image: adriangp/tfm-bd
           ports:
           - containerPort: 27017
             name: mongodb
