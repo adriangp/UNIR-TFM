@@ -55,8 +55,7 @@ pipeline {
 	  stage('Deploy in GKE'){
 	    steps{
 		   step([$class: 'KubernetesEngineBuilder', projectId: "${projectID}", clusterName: "${clusterName}", location: "${clusterLocation}", manifestPattern: "./Kubernetes/mongo.yaml", credentialsId: "${gkeCredential}", verifyDeployments: true])
-		   //step([$class: 'KubernetesEngineBuilder', projectId: $projectID, $clusterName: $clusterName, location: $clusterLocation, manifestPattern: './Kubernetes/python.yaml', credentialsId: $gkeCredential, verifyDeployments: true])
-           //step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+		   step([$class: 'KubernetesEngineBuilder', projectId: "${projectID}", clusterName: "${clusterName}", location: "${clusterLocation}", manifestPattern: "./Kubernetes/python.yaml", credentialsId: "${gkeCredential}", verifyDeployments: true])
 
 		}
 	  }
