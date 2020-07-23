@@ -34,19 +34,3 @@ spec:
       port: 27017
       targetPort: 27017
       name: mongodb
----
-apiVersion: extensions/v1beta1  
-kind: Ingress  
-metadata:  
-  name: mongo
-  annotations:
-    kubernetes.io/ingress.class: traefik
-spec:  
-  rules:
-  - host: unir-tfm-bd.34.76.250.116.nip.io
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: mongo-svc
-          servicePort: http
