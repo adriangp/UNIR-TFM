@@ -24,9 +24,8 @@ kind: Service
 metadata:
   name: app-svc
 spec:
-  type: NodePort
   ports:
-  - name: app-svc
+  - name: http
     port: 80
     protocol: TCP
     targetPort: 5000
@@ -39,7 +38,7 @@ metadata:
   name: python
   annotations:
     kubernetes.io/ingress.class: traefik
-spec:  
+spec:
   rules:
   - host: unir-tfm.34.76.250.116.nip.io
     http:
