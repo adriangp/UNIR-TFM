@@ -24,6 +24,7 @@ kind: Service
 metadata:
   name: app-svc
 spec:
+  type: NodePort
   ports:
   - name: http
     port: 80
