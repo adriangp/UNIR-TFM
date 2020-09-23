@@ -18,7 +18,7 @@ def getDatabases():
   cn.close()
   return "Lista de bases de datos: %s " %(databases)
   
-@app.route("/test")
+@app.route("/test/")
 def test():
   return app.send_static_file('/App/test.html')
 
