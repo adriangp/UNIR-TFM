@@ -17,7 +17,10 @@ def getDatabases():
   databases= cn.list_database_names()
   cn.close()
   return "Lista de bases de datos: %s " %(databases)
-
+  
+@app.route("/test")
+def test():
+  return app.send_static_file('test.html')
 
 if __name__ == "__main__":
   app.run(host='0.0.0.0')
