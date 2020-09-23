@@ -20,7 +20,7 @@ def getDatabases():
   
 @app.route("/test/")
 def test():
-  return app.send_static_file('/App/test.html')
+  return render_template('test.html')
 
 if __name__ == "__main__":
   app.run(host='0.0.0.0')
