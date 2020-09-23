@@ -1,8 +1,8 @@
 import os
 import pymongo
 from pymongo import MongoClient
-from flask import Flask
-app = Flask(__name__, static_url_path='')
+from flask import *
+app = Flask(__name__)
 
 @app.route("/")
 def hello():
@@ -18,7 +18,7 @@ def getDatabases():
   cn.close()
   return "Lista de bases de datos: %s " %(databases)
   
-@app.route("/test/")
+@app.route('/test')
 def test():
   return render_template('test.html')
 
