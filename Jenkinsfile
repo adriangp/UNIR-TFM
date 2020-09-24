@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent any 
   environment{
 	versionBD = "1.3"
 	versionAPP = "1.3"
