@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mongo
-          image: adriangp/tfm-bd:1.3
+          image: adriangp/tfm-bd:1.4
           ports:
           - containerPort: 27017
             name: mongodb

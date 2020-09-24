@@ -1,8 +1,8 @@
 pipeline {
   agent any 
   environment{
-	versionBD = "1.3"
-	versionAPP = "1.3"
+	versionBD = "1.4"
+	versionAPP = "1.4"
     customimageBD = ''
 	customimageAPP = ''
 	registryBD = "adriangp/tfm-bd"
