@@ -22,5 +22,9 @@ def getDatabases():
 def test():
   return render_template('test.html')
 
+@app.route('/defensa')
+def defensa():
+  return render_template('defensa.html')
+  
 if __name__ == "__main__":
   app.run(host='0.0.0.0')
